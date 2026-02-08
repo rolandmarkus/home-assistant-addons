@@ -19,5 +19,3 @@ map:
   - share:rw
   - media:rw
   - addon_config:rw
-
-image: "local/romm-addon-{arch}"
