@@ -1,0 +1,23 @@
+name: RomM
+slug: romm
+version: "1.0.0"
+description: RomM – ROM Manager & Launcher
+startup: services
+boot: auto
+init: false
+
+arch:
+  - amd64
+
+ports:
+  3000/tcp: 3000
+
+options: {}
+schema: {}
+
+map:
+  - share:rw
+  - media:rw
+  - addon_config:rw
+
+image: "local/romm-addon-{arch}"
