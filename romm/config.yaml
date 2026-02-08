@@ -1,0 +1,54 @@
+name: RomM
+slug: romm
+version: "1.0.0"
+description: |
+  RomM – a self-hosted ROM collection manager & launcher.
+  This config is based on the original Rigerc addon, fixed for amd64
+  and proper RomM environment variables including MariaDB support.
+
+startup: services
+boot: auto
+init: false
+
+arch:
+  - amd64
+
+ports:
+  3000/tcp: 3000
+
+options:
+  auth_secret_key:
+    description: "Secret key for authentication (32+ random chars)"
+    example: "dbb3b8e766a5c9d73a5a3d8bc98f2f1f"
+    default: ""
+  db_host:
+    description: "Database host (MariaDB/MySQL)"
+    default: "core-mariadb"
+  db_port:
+    description: "Database port"
+    default: 3306
+  db_name:
+    description: "Database name to use for RomM"
+    default: "romm"
+  db_user:
+    description: "Database user"
+    default: "romm"
+  db_password:
+    description: "Database user password"
+    default: ""
+
+schema:
+  auth_secret_key: str
+  db_host: str
+  db_port: int
+  db_name: str
+  db_user: str
+  db_password: password
+
+map:
+  - share:rw
+  - media:rw
+  - addon_config:rw
+
+build: true
+command: [ "/run.sh" ]
