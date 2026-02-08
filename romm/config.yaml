@@ -1,3 +1,4 @@
+
 name: RomM
 slug: romm
 version: "1.0.0"
@@ -12,10 +13,25 @@ arch:
 ports:
   3000/tcp: 3000
 
-options: {}
-schema: {}
+options:
+  auth_secret_key: ""
+  db_host: "core-mariadb"
+  db_port: 3306
+  db_name: "romm"
+  db_user: "romm"
+  db_password: ""
+
+schema:
+  auth_secret_key: str
+  db_host: str
+  db_port: int
+  db_name: str
+  db_user: str
+  db_password: password
 
 map:
   - share:rw
   - media:rw
   - addon_config:rw
+
+command: ["/run.sh"]
